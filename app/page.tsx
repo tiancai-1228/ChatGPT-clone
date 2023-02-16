@@ -8,7 +8,7 @@ import {
 function HomePage() {
   return (
     <div className="flex flex-col items-center text-white justify-center h-screen px-2">
-      <h1 className="text-5xl font-bold mb-20">ChatGPT</h1>
+      <h1 className="text-5xl font-bold mb-20">Robby ChatGPT Clone</h1>
 
       <div className="flex space-x-2 text-center">
         <div>
