@@ -3,6 +3,7 @@ import React from "react";
 import { signOut, useSession } from "next-auth/react";
 import NewChart from "./NewChart";
 
+import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, orderBy, query } from "firebase/firestore";
 import { db } from "../firebast";
@@ -44,14 +45,22 @@ function SideBar() {
         </div>
       </div>
       {session && (
-        <img
-          onClick={() => {
-            signOut();
-          }}
-          src={session.user?.image!}
-          alt="user img"
-          className="h-12 w-12 rounded-full cursor-pointer mx-auto mb-2 hover:opacity-50"
-        />
+        <>
+          <img
+            src={session.user?.image!}
+            alt="user img"
+            className="h-12 w-12 rounded-full cursor-pointer mx-auto mb-2"
+          />
+          <div
+            className="text-white flex my-4 items-center text-xl justify-center  hover:opacity-50 hover:cursor-pointer"
+            onClick={() => {
+              signOut();
+            }}
+          >
+            <ArrowRightOnRectangleIcon className="h-8 w-8 " />
+            <p className="ml-4"> Log out</p>
+          </div>
+        </>
       )}
     </div>
   );

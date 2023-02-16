@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
 import { signIn } from "next-auth/react";
+import ChatPGT from "../public/image/ChatPGT.png";
 
 function Login() {
   return (
-    <div className="bg-[#11a37f] h-screen flex flex-col justify-center items-center text-center">
+    <div className="bg-[#202123] h-screen flex flex-col justify-center items-center text-center">
+      <img src={ChatPGT.src} alt="" className="h-20 w-20 mb-6" />
       <button
         onClick={() => {
           signIn("google");
