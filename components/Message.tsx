@@ -1,12 +1,14 @@
 import { DocumentData } from "firebase/firestore";
-import React from "react";
+import React, { useState } from "react";
 import ChatPGT from "../public/image/ChatPGT.png";
+import { Typewriter } from "react-simple-typewriter";
 
 interface Props {
   message: DocumentData;
+  isLast: boolean;
 }
 
-function Message({ message }: Props) {
+function Message({ message, isLast }: Props) {
   const isChatGPT = message.user.name === "ChatGPT";
 
   return (
@@ -17,7 +19,21 @@ function Message({ message }: Props) {
           alt=""
           className="h-8 w-8"
         />
-        <p className="pt-1 text-sm"> {message.text}</p>
+        <p className="pt-1 text-sm">
+          {isLast ? (
+            <Typewriter
+              words={[message.text]}
+              loop={1}
+              cursor
+              cursorStyle={false}
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          ) : (
+            <p>{message.text}</p>
+          )}
+        </p>
       </div>
     </div>
   );
